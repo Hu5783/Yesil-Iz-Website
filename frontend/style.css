@@ -1,6 +1,6 @@
 :root {
   --green-main: #6b8e4e;
-  --cream-bg: #faf4d3;
+  --cream-bg: #6b8e4e;
   --text-dark: #2c3e2e;
   --white: #ffffff;
 }
@@ -46,7 +46,8 @@ main {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.logo-area {
+.logo-area{
+  color: var(--white);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -81,7 +82,7 @@ main {
   background-color: var(--green-main);
   color: var(--white);
   text-align: center;
-  padding: 4rem 1rem;
+  padding: 6rem 1rem 4rem 1rem;
 }
 
 .hero h1 {
@@ -122,6 +123,7 @@ footer {
   padding: 1.5rem;
   font-size: 0.85rem;
   margin-top: 3rem;
+  text-align: left;
 }
 
 /* Text designes */
@@ -196,4 +198,3 @@ footer {
 
 .bg-green { background-color: #6e9653; }
 .bg-cream { background-color: #fbfab5; }
-
