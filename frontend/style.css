@@ -9,7 +9,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Georgia', serif;
 }
 
 body {
@@ -27,12 +26,24 @@ main {
 
 
 .navbar {
-  background-color: var(--green-main);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  color: var(--white);
+}
+
+/* Background state applied when scrolling down */
+.navbar.scrolled {
+  background-color: #000000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .logo-area {
@@ -113,24 +124,76 @@ footer {
   margin-top: 3rem;
 }
 
-body_text {
+/* Text designes */
+
+.body_text {
   color: var(--text-dark);
   font-family: 'Lora', serif;
   line-height: 1.6;
 }
 
-header_text {
+.header_text {
   color: var(--white);
   font-weight: bold;
   margin-bottom: 1rem;
   font-family: 'Playfair Display', serif;
-  font-weight: 700; 
 }
 
-italic_text {
+
+.italic_text {
   font-style: italic;
   color: var(--text-dark);
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-weight: 700;
 }
+
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.green-text {
+  color: rgb(61, 123, 52);
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+}
+
+.white-text {
+  color: #f4f4f4;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+}
+
+.yellow-text {
+  color: #fbfab5;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+}
+
+.subheader{
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Block Styles */
+.full-block {
+  width: 100%;
+  padding: 3rem 0;      /* üst-alt boşluk, dış kapsayıcıda */
+}
+
+.full-block-inner {
+  max-width: 900px;    
+  margin: 0 auto;        /* yatayda ortalar */
+  padding: 0 1.5rem;     /* mobilde kenara yapışmasın */
+}
+
+.bg-green { background-color: #6e9653; }
+.bg-cream { background-color: #fbfab5; }
+
