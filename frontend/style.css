@@ -20,6 +20,12 @@ body {
     color: var(--text-dark);
 }
 
+main {
+  flex: 1; 
+}
+
+
+
 .navbar {
   background-color: var(--green-main);
   display: flex;
