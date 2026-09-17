@@ -173,6 +173,12 @@ footer {
   font-family: 'Playfair Display', serif;
 }
 
+.black-text {
+  color: #3f3f3f;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+}
+
 .yellow-text {
   color: #fbfab5;
   font-weight: bold;
@@ -198,3 +204,54 @@ footer {
 
 .bg-green { background-color: #6e9653; }
 .bg-cream { background-color: #fbfab5; }
+
+/* Proje için(Püh size) */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #222222;
+  min-width: 190px;
+  border-radius: 6px;
+  padding: 12px 0;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+  flex-direction: column;
+}
+.dropdown-menu .sub-nav-btn {
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  padding: 10px 20px;
+  text-align: left;
+  width: 100%;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.dropdown-menu .sub-nav-btn:hover {
+  color: #f3e6b3; /* subtle warm accent */
+}
+.dropdown-btn .arrow {
+  font-size: 0.8rem;
+  margin-left: 4px;
+}
+
+.projects-btn {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 5px 10px;
+}

@@ -30,3 +30,46 @@ window.addEventListener('scroll', () => {
     navbar?.classList.remove('scrolled');
   }
 });
+
+// Projeler için..
+document.querySelectorAll('[data-tab]').forEach((button) => {
+  button.addEventListener('click', (e) => {
+    const targetTab = (e.currentTarget as HTMLElement).getAttribute('data-tab');
+
+    document.querySelectorAll('.tab-content').forEach((section) => {
+      section.classList.remove('active');
+    });
+
+    if (targetTab) {
+      document.getElementById(targetTab)?.classList.add('active');
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const tabButtons = document.querySelectorAll<HTMLElement>('[data-tab]');
+  const tabContents = document.querySelectorAll<HTMLElement>('.tab-content');
+
+  tabButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      const targetButton = event.currentTarget as HTMLElement;
+      const targetTabId = targetButton.dataset.tab;
+
+      if (!targetTabId) return;
+
+      tabContents.forEach((section) => {
+        section.classList.remove('active');
+      });
+
+      const selectedSection = document.getElementById(targetTabId);
+      if (selectedSection) {
+        selectedSection.classList.add('active');
+      }
+
+      tabButtons.forEach((btn) => btn.classList.remove('active'));
+      targetButton.classList.add('active');
+
+      targetButton.blur();
+    });
+  });
+});

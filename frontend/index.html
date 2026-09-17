@@ -14,19 +14,34 @@
 <body>
 
   <header class="navbar">
+    <a href="https://forms.gle/3oi638MqRmiWmWrb6" target="_blank">
     <div class="logo-area">
       <img src="images/logo.png" alt="Yeşil İz Logo" class="logo">
       <span>yesiliz.com</span>
     </div>
+    </a>
+
     <nav class="nav-links">
       <button class="nav-btn active" data-tab="home">Home</button>
-      <button class="nav-btn" data-tab="projects">Projects</button>
+      
+      <!-- Wrap Projects and its menu inside .dropdown -->
+      <div class="dropdown">
+        <h1 class="projects-btn">Projects <span class="arrow">▾</span></h1>
+        <div class="dropdown-menu">
+          <button class="nav-btn sub-nav-btn" data-tab="better-parks">Better Parks</button>
+          <button class="nav-btn sub-nav-btn" data-tab="healthy-trees">Healthy Trees</button>
+          <button class="nav-btn sub-nav-btn" data-tab="clean-coast">Clean Coast</button>
+          <button class="nav-btn sub-nav-btn" data-tab="project-green">Project Green</button>
+        </div>
+      </div>
       <button class="nav-btn" data-tab="getting-involved">Getting Involved</button>
       <button class="nav-btn" data-tab="green-journal">Green Journal</button>
       <button class="nav-btn" data-tab="weekly-knowledge">Weekly Knowledge</button>
       <button class="nav-btn" data-tab="support">Support</button>
-      <button class="nav-btn" data-tab="volunteers">Volunteers</button>
+      <button class="nav-btn" data-tab="rewards">Rewards</button>
     </nav>
+    
+    </div>
   </header>
 
   <main>
@@ -49,23 +64,23 @@
       <!-- What do we do? -->
       <div class="full-block bg-green">
         <div class="full-block-inner">
-          <h2 class="yellow-text center italic_text" style="font-size: 2.5rem; margin-bottom: 3rem;">What do we do?</h2>
+          <h2 class="white-text center italic_text" style="font-size: 2.5rem; margin-bottom: 3rem;">What do we do?</h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; text-align: center;">
             <div>
-              <h3 class="yellow-text" style="font-size: 1.4rem; margin-bottom: 0.8rem;">Environmental Projects</h3>
-              <p class="yellow-text" style="font-family: 'Lora', serif; font-weight: 500; font-size: 0.95rem;">We organize projects that create tangible environmental impact.</p>
+              <h3 class="white-text" style="font-size: 1.4rem; margin-bottom: 0.8rem;">Environmental Projects</h3>
+              <p class="white-text" style="font-family: 'Lora', serif; font-weight: 500; font-size: 0.95rem;">We organize projects that create tangible environmental impact.</p>
             </div>
             <div>
-              <h3 class="yellow-text" style="font-size: 1.4rem; margin-bottom: 0.8rem;">Awareness & Education</h3>
-              <p class="yellow-text" style="font-family: 'Lora', serif; font-weight: 500; font-size: 0.95rem;">We encourage young people to learn about environmental issues and plan to organize events.</p>
+              <h3 class="white-text" style="font-size: 1.4rem; margin-bottom: 0.8rem;">Awareness & Education</h3>
+              <p class="white-text" style="font-family: 'Lora', serif; font-weight: 500; font-size: 0.95rem;">We encourage young people to learn about environmental issues and plan to organize events.</p>
             </div>
             <div>
-              <h3 class="yellow-text" style="font-size: 1.4rem; margin-bottom: 0.8rem;">Volunteering</h3>
-              <p class="yellow-text" style="font-family: 'Lora', serif; font-weight: 500; font-size: 0.95rem;">We bring high school students all around İstanbul together to take action.</p>
+              <h3 class="white-text" style="font-size: 1.4rem; margin-bottom: 0.8rem;">Volunteering</h3>
+              <p class="white-text" style="font-family: 'Lora', serif; font-weight: 500; font-size: 0.95rem;">We bring high school students all around İstanbul together to take action.</p>
             </div>
             <div>
-              <h3 class="yellow-text" style="font-size: 1.4rem; margin-bottom: 0.8rem;">Community</h3>
-              <p class="yellow-text" style="font-family: 'Lora', serif; font-weight: 500; font-size: 0.95rem;">We build a growing, prestigious network of young people committed to a greener future.</p>
+              <h3 class="white-text" style="font-size: 1.4rem; margin-bottom: 0.8rem;">Community</h3>
+              <p class="white-text" style="font-family: 'Lora', serif; font-weight: 500; font-size: 0.95rem;">We build a growing, prestigious network of young people committed to a greener future.</p>
             </div>
           </div>
         </div>
@@ -82,8 +97,8 @@
       <!-- Our Vision -->
       <div class="full-block bg-green">
         <div class="full-block-inner">
-          <h2 class="yellow-text right" style="font-size: 2.3rem; margin-bottom: 1rem;">Our Vision</h2>
-          <p class="body_text yellow-text right" style="font-weight: 600; font-size: 1.05rem; line-height: 1.7;">Our vision at Yeşil İz is to create a more sustainable future where environmental awareness becomes an integral part of everyday life, and where people view their responsibility toward nature not merely as a duty, but as a shared value. We strive to build a society in which young people are not only followers of change, but also its leaders.</p>
+          <h2 class="white-text right" style="font-size: 2.3rem; margin-bottom: 1rem;">Our Vision</h2>
+          <p class="body_text white-text right" style="font-weight: 600; font-size: 1.05rem; line-height: 1.7;">Our vision at Yeşil İz is to create a more sustainable future where environmental awareness becomes an integral part of everyday life, and where people view their responsibility toward nature not merely as a duty, but as a shared value. We strive to build a society in which young people are not only followers of change, but also its leaders.</p>
         </div>
       </div>
 
@@ -104,14 +119,47 @@
       </div>
     </section>
 
-    <!-- projects tab -->
-    <section id="projects" class="tab-content">
+    <!-- Our Projects tab -->
+    <section id="better-parks" class="tab-content">
       <div class="hero">
-        <h1 class="header_text" style="font-size: 4rem;">Projects</h1>
+        <h1 class="header_text" style="font-size: 4rem;">Better Parks</h1>
       </div>
       <div class="full-block bg-cream">
         <div class="full-block-inner center">
-          <p class="body_text green-text" style="font-weight: 600; font-size: 1.1rem;">Our projects are based on keeping our environment safe and expanding teenagers' awareness.</p>
+          <p class="body_text green-text">Details about the Better Parks project...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="healthy-trees" class="tab-content">
+      <div class="hero">
+        <h1 class="header_text" style="font-size: 4rem;">Healthy Trees</h1>
+      </div>
+      <div class="full-block bg-cream">
+        <div class="full-block-inner center">
+          <p class="body_text green-text">Our "Healthy Trees" project is based on keeping forest habitats clean.</p>
+        </div>
+      </div>    
+    </section>
+
+    <section id="clean-coast" class="tab-content">
+    <div class="hero">
+        <h1 class="header_text" style="font-size: 4rem;">Clean Coast</h1>
+      </div>
+      <div class="full-block bg-cream">
+        <div class="full-block-inner center">
+          <p class="body_text green-text">Our "Clean Coast" project is based on keeping coasts clean to protect sea animals and nature's beauty.</p>
+        </div>
+      </div>        
+    </section>
+
+    <section id="project-green" class="tab-content">
+      <div class="hero">
+        <h1 class="header_text" style="font-size: 4rem;">Project Green</h1>
+      </div>
+      <div class="full-block bg-cream">
+        <div class="full-block-inner center">
+          <p class="body_text green-text">"Project Green" aims to raise young people's awareness about the importance of the environment.</p>
         </div>
       </div>
     </section>
@@ -124,24 +172,24 @@
       <div class="full-block bg-cream">
         <div class="full-block-inner">
           <h2 class="green-text" style="font-size: 2.3rem; margin-bottom: 1.5rem;">Volunteer Application Process</h2>
-          <p class="body_text green-text" style="font-weight: 600; margin-bottom: 0.4rem;">Application Form Opens: September 15 2026 - <a href="#" style="color: var(--green-main); text-decoration: underline;">Click here</a></p>
-          <p class="body_text green-text" style="font-weight: 600; margin-bottom: 0.4rem;">Application Form Closes: October 20 2026</p>
-          <p class="body_text green-text" style="font-weight: 600; margin-bottom: 1.5rem;">Volunteers Announced: November 8 2026</p>
-          <p class="body_text green-text" style="font-weight: 600; margin-bottom: 3rem; line-height: 1.6;">Starting November 8, a WhatsApp group will be created for selected volunteers, where all announcements, updates, and important information will be shared.</p>
+          <p class="body_text green-text" style="font-weight: 600; margin-bottom: 0.4rem;">Application Form Opens: September 10 2026 <a href="https://forms.gle/3oi638MqRmiWmWrb6" style="color: var(--green-main); text-decoration: underline;">Click here</a></p>
+          <p class="body_text green-text" style="font-weight: 600; margin-bottom: 0.4rem;">Application Form Closes: September 20 2026</p>
+          <p class="body_text green-text" style="font-weight: 600; margin-bottom: 1.5rem;">Volunteers Announced: September 25 2026</p>
+          <p class="body_text green-text" style="font-weight: 600; margin-bottom: 3rem; line-height: 1.6;">Starting September 25, a WhatsApp group will be created for selected volunteers, where all announcements, updates, and important information will be shared.</p>
      </div>
-     <div class="full-block bg-green">
+     <div class="full-block bg-yellow">
         <div class="full-block-inner">
 
-          <h2 class="yellow-text" style="font-size: 2.3rem; margin-bottom: 1.5rem;">How Does the Volunteer System Work?</h2>
-          <p class="body_text yellow-text" style="font-weight: 600; margin-bottom: 1.2rem; line-height: 1.6;">Being selected as a Yeşil İz volunteer does not automatically mean that you are considered an active volunteer. Your volunteer status is shaped by your participation in events and the active contribution you make throughout the process.</p>
-          <p class="body_text yellow-text" style="font-weight: 600; margin-bottom: 1.2rem; line-height: 1.6;">After each event you attend, you will receive a Volunteer Certificate documenting the amount of time you contributed to that event. At the end of each term, additional certificates will be awarded based on your overall participation:</p>
+          <h2 class="green-text" style="font-size: 2.3rem; margin-bottom: 1.5rem;">How Does the Volunteer System Work?</h2>
+          <p class="body_text green-text" style="font-weight: 600; margin-bottom: 1.2rem; line-height: 1.6;">Being selected as a Yeşil İz volunteer does not automatically mean that you are considered an active volunteer. Your volunteer status is shaped by your participation in events and the active contribution you make throughout the process.</p>
+          <p class="body_text green-text" style="font-weight: 600; margin-bottom: 1.2rem; line-height: 1.6;">After each event you attend, you will receive a Volunteer Certificate documenting the amount of time you contributed to that event. At the end of each term, additional certificates will be awarded based on your overall participation:</p>
           
-          <ul style="margin-left: 2rem; margin-bottom: 1.5rem;" class="body_text yellow-text">
-            <li style="margin-bottom: 0.5rem; font-weight: 600;">4 events: <em class="italic_text yellow-text">Active Volunteer Certificate</em></li>
-            <li style="margin-bottom: 0.5rem; font-weight: 600;">7 or more events: <em class="italic_text yellow-text">Outstanding Volunteer Certificate</em></li>
+          <ul style="margin-left: 2rem; margin-bottom: 1.5rem;" class="body_text green-text">
+            <li style="margin-bottom: 0.5rem; font-weight: 600;">4 events: <em class="italic_text green-text">Active Volunteer Certificate</em></li>
+            <li style="margin-bottom: 0.5rem; font-weight: 600;">7 or more events: <em class="italic_text green-text">Outstanding Volunteer Certificate</em></li>
           </ul>
           
-          <p class="body_text yellow-text" style="font-weight: 600; line-height: 1.6;">This system allows your time, commitment, and contributions to Yeşil İz to be formally recognized and documented throughout your volunteering journey.</p>
+          <p class="body_text green-text" style="font-weight: 600; line-height: 1.6;">This system allows your time, commitment, and contributions to Yeşil İz to be formally recognized and documented throughout your volunteering journey.</p>
           </div>
 
         </div>
@@ -194,14 +242,14 @@
       </div>
     </section>
 
-    <!-- volunteers tab -->
-    <section id="volunteers" class="tab-content">
+    <!-- rewards tab -->
+    <section id="rewards" class="tab-content">
       <div class="hero">
-        <h1 class="header_text" style="font-size: 4rem;">Volunteers</h1>
+        <h1 class="header_text" style="font-size: 4rem;">Rewards</h1>
       </div>
       <div class="full-block bg-cream">
         <div class="full-block-inner center">
-          <p class="green-text" style="font-size: 1.6rem; font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1.5; max-width: 800px; margin: 0 auto;">After each academic year, the names of all volunteers who receive an "Active Volunteer" or "Outstanding Volunteer" certificate will be featured on our website as a way of recognizing and publicly documenting their dedication and contributions to Yeşil İz.</p>
+          <p class="black-text" style="font-size: 1.6rem; font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1.5; max-width: 800px; margin: 0 auto;">After each academic year, the names of all volunteers who receive an "Active Volunteer" or "Outstanding Volunteer" certificate will be featured on our website as a way of recognizing and publicly documenting their dedication and contributions to Yeşil İz.</p>
         </div>
       </div>
     </section>
