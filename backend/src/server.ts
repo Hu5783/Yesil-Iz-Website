@@ -6,7 +6,7 @@ import { generateAdminToken } from './auth.js';
 const app = express();
 const PORT = process.env.PORT || 5023;
 
-app.use(cors({ origin: 'http://localhost:3023' })); // Frontend portuna izin ver
+app.use(cors({ origin: 'http://localhost:3023', credentials: true })); // Frontend portuna izin ver
 app.use(express.json());
 
 interface SupportEntry {

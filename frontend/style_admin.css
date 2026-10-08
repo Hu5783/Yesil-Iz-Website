@@ -1,0 +1,74 @@
+:root {
+    --cream-main: #fffede;
+    --dark-bg: #005e5d;
+    --text-dark: #2c3e2e;
+    --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    background-color: var(--dark-bg); 
+    color: var(--text-dark);
+}
+
+main {
+  flex: 1; 
+}
+
+.baslık {
+    font-size: 70px;
+    font-weight: 500;
+}
+
+.alt_baslık {
+    font-size: 35px;
+    font-weight: 500;
+}
+
+.ana_yesil {
+    color: #7cbb2f;
+}
+
+.body_metin {
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 500;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input_box {
+    background-color: #0b4544;;
+    color: #fffdbd;
+    border-radius: 5px; 
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+}
+
+.input_box::placeholder {
+    color: #bbbbbb;  
+    opacity: 1;     
+}
+
+.input_box::-webkit-input-placeholder { 
+    color: #bbbbbb;  
+}
+.input_box:-ms-input-placeholder { 
+    color: #bbbbbb;  
+}
