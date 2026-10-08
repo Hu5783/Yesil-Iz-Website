@@ -1,5 +1,5 @@
-import express, { Request, Response } from 'express';
-import { isLoginBody, isPasswordCorrect, findAdminByEmail } from './validation.js';
+import express, { NextFunction, Request, Response } from 'express';
+import { isLoginBody, isPasswordCorrect } from './validation.js';
 import cors from 'cors';
 import { generateAdminToken } from './auth.js';
 
@@ -29,19 +29,19 @@ app.post('/api/admin/login', async (req: Request, res: Response) => {
       return res.status(401).json({ error: 'Geçersiz e-posta veya şifre' });
     }
     const token = generateAdminToken(email);
-    res.json({ message: 'Giriş başarılı' });
-
     res.cookie('admin_token', token, {
       httpOnly: true,
       secure: true,
       sameSite: 'strict',
       maxAge: 2 * 60 * 60 * 1000,
     });
-
+    
+    res.json({ message: 'Giriş başarılı' });
   } catch (error) {
     res.status(500).json({ error: 'Sunucu hatası' });
   }
 });
+
 
 
 app.get('/api/admin/panel', (req: Request, res: Response) => {

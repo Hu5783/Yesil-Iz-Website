@@ -1,4 +1,8 @@
 import bcrypt from 'bcrypt';
+
+import { Request, Response, NextFunction } from 'express';
+import { verifyAdminToken } from './auth';
+
 export function isLoginBody(value: unknown): value is { password: string, email: string } {
     if (typeof value === 'object' && value !== null) {
         if (!('email' in value) || !('password' in value)) {
@@ -36,5 +40,17 @@ export async function isPasswordCorrect(email: string, password: string): Promis
   } catch (error) {
     console.log('Error comparing password:', error);
     return Promise.resolve(false);
+  }
+}
+
+export function requireAdmin(req: Request, res: Response, next: NextFunction): void {
+  if (!req.cookies || !req.cookies.admin_token) {
+    res.status(401).json({ error: 'Admin token is missing' });
+    return;
+  }
+  if (verifyAdminToken(req.cookies.admin_token) === null) {
+    res.status(403).json({ error: 'Invalid admin token' });
+  } else {
+    next();
   }
 }
