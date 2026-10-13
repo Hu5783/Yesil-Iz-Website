@@ -13,21 +13,32 @@
   <meta name="robots" content="noindex">
 </head>
 
+
 <body>
-    <!--Giriş-->
-    <main class="content_box">
-        <article class="entry_class">
-            <h1 class="baslık ana_yesil", style="padding-top: 80px; padding-left: 100px;">Welcome,</h1>
-            <h1 class="baslık ana_yesil", class="ana_yesil", style="padding-left: 100px;">Yeşil İz Admin Page'e Hoşgeldiniz </h1>,
-            <h1 class="alt_baslık ana_yesil", style="padding-left: 100px;">Sena ve Arya dostlar, Hüseyin Gültekin gururla sunar</h1>
-        </article>
-    </main>
+  <main class="content-box">
+    <article class="entry-card">
+      <h2>Yeni içerik</h2>
+      <form id="entry-form">
+        <select id="entry-section" name="section" class="input_box" required></select>
+        <input type="text" name="title" class="input_box" placeholder="Başlık" maxlength="200" required>
+        <textarea name="content" class="input_box" placeholder="İçerik" rows="6" maxlength="5000" required></textarea>
+        <button type="submit">Yayınla</button>
+      </form>
+      <p id="entry-message"></p>
+    </article>
 
+    <article class="entry-card">
+      <h2>Yayındaki içerikler</h2>
+      <select id="filter-section" class="input_box"></select>
+      <div id="entry-list"></div>
+    </article>
 
-    <!--Post Atma/Ekleme-->
+    <article class="entry-card">
+      <h2>Gönüllü başvuruları</h2>
+      <div id="volunteer-list"></div>
+    </article>
 
-
-    <!--Veri Görüntüleme-->
-  <script type="module" src="src/admin.ts"></script>
+    <button id="logout-btn" type="button">Çıkış yap</button>
+  </main>
+  <script type="module" src="src/panel.ts"></script>
 </body>
-</html>

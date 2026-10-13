@@ -2,6 +2,34 @@ import bcrypt from 'bcrypt';
 
 import { Request, Response, NextFunction } from 'express';
 import { verifyAdminToken } from './auth';
+import { SECTIONS, Section, NewEntry, NewVolunteer } from './types';
+
+
+
+export function isSection(value: unknown): value is Section {
+  return typeof value === 'string' && (SECTIONS as readonly string[]).includes(value);
+}
+
+export function isNewEntry(value: unknown): value is NewEntry {
+  if (typeof value !== 'object' || value === null) return false;
+  if (!('section' in value) || !('title' in value) || !('content' in value)) return false;
+  return (
+    isSection(value.section) &&
+    typeof value.title === 'string' && value.title.trim().length > 0 && value.title.length <= 200 &&
+    typeof value.content === 'string' && value.content.trim().length > 0 && value.content.length <= 5000
+  );
+}
+
+export function isNewVolunteer(value: unknown): value is NewVolunteer {
+  if (typeof value !== 'object' || value === null) return false;
+  if (!('name' in value) || !('email' in value) || !('message' in value) || !('consent' in value)) return false;
+  return (
+    typeof value.name === 'string' && value.name.trim().length > 0 && value.name.length <= 100 &&
+    typeof value.email === 'string' && value.email.includes('@') && value.email.length <= 200 &&
+    typeof value.message === 'string' && value.message.length <= 1000 &&
+    value.consent === true
+  );
+}
 
 export function isLoginBody(value: unknown): value is { password: string, email: string } {
     if (typeof value === 'object' && value !== null) {
@@ -44,13 +72,14 @@ export async function isPasswordCorrect(email: string, password: string): Promis
 }
 
 export function requireAdmin(req: Request, res: Response, next: NextFunction): void {
-  if (!req.cookies || !req.cookies.admin_token) {
-    res.status(401).json({ error: 'Admin token is missing' });
+  const token = req.cookies?.admin_token;
+  if (typeof token !== 'string') {
+    res.status(401).json({ error: 'Giriş gerekli' });
     return;
   }
-  if (verifyAdminToken(req.cookies.admin_token) === null) {
-    res.status(403).json({ error: 'Invalid admin token' });
-  } else {
-    next();
+  if (verifyAdminToken(token) === null) {
+    res.status(401).json({ error: 'Geçersiz veya süresi dolmuş oturum' });
+    return;
   }
+  next();
 }

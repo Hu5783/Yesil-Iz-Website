@@ -1,6 +1,6 @@
 :root {
   --green-main: #6b8e4e;
-  --cream-bg: #feffab;
+  --cream-bg: #fbfab5;
   --text-dark: #2c3e2e;
   --white: #ffffff;
 }
@@ -254,4 +254,28 @@ footer {
   font-size: 0.9rem;
   cursor: pointer;
   padding: 5px 10px;
+}
+
+.volunteer-form { display: flex; flex-direction: column; gap: 12px; max-width: 500px; }
+.volunteer-form input[type="text"],
+.volunteer-form input[type="email"],
+.volunteer-form textarea { padding: 10px; border-radius: 6px; border: 1px solid #ccc; font: inherit; }
+
+/* eksik sınıf: Getting Involved'daki ikinci blok */
+.bg-yellow { background-color: #fbfab5; }
+
+/* admin panelinden gelen kartlar */
+.entry-card h3 { font-family: 'Playfair Display', serif; color: rgb(61, 123, 52); margin-bottom: 0.4rem; }
+.entry-card p { font-family: 'Lora', serif; line-height: 1.6; margin-bottom: 0.5rem; white-space: pre-line; }
+.entry-card small { color: #6b6b6b; }
+
+/* klavye ve dokunmatik ile dropdown */
+.dropdown:focus-within .dropdown-menu { display: flex; flex-direction: column; }
+
+/* mobil */
+@media (max-width: 800px) {
+  .navbar { flex-direction: column; gap: 0.4rem; padding: 0.6rem 1rem; }
+  .nav-links { flex-wrap: wrap; justify-content: center; gap: 4px; }
+  .hero { padding: 9rem 1rem 3rem; }
+  .hero h1 { font-size: 2.5rem !important; } /* inline style'ı ezmek için */
 }

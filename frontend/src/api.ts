@@ -1,14 +1,22 @@
 const API_BASE_URL = 'http://localhost:5023/api';
 
-export async function fetchData<T>(endpoint: string): Promise<T> {
-  const response = await fetch(`${API_BASE_URL}${endpoint}`, {credentials: 'include'});
-  if (!response.ok) throw new Error('Ağ hatası oluştu');
+export class HttpError extends Error {
+  constructor(public status: number, message: string) {
+    super(message);
+  }
+}
+
+async function request<T>(method: string, endpoint: string, body?: unknown): Promise<T> {
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    method,
+    credentials: 'include',
+    headers: body === undefined ? undefined : { 'Content-Type': 'application/json' },
+    body: body === undefined ? undefined : JSON.stringify(body),
+  });
+  if (!response.ok) throw new HttpError(response.status, `HTTP ${response.status}`);
   return response.json();
 }
 
-export async function postData<T>(endpoint: string, body: unknown): Promise<T> {
-  const response = await fetch(`${API_BASE_URL}${endpoint}`, {method: 'POST', body: JSON.stringify(body), headers: { 'Content-Type': 'application/json' }, credentials: 'include'});
-  if(!response.ok) throw new Error('Mesajı gönderirken hata oluştu');
-  return response.json();
-
-}
+export const fetchData = <T>(endpoint: string) => request<T>('GET', endpoint);
+export const postData = <T>(endpoint: string, body: unknown) => request<T>('POST', endpoint, body);
+export const deleteData = <T>(endpoint: string) => request<T>('DELETE', endpoint);
