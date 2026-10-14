@@ -279,3 +279,7 @@ footer {
   .hero { padding: 9rem 1rem 3rem; }
   .hero h1 { font-size: 2.5rem !important; } /* inline style'ı ezmek için */
 }
+
+.volunteer-form label { color: var(--text-dark); font-size: 0.9rem; }
+.volunteer-form button { align-self: flex-start; background: var(--green-main); color: var(--white); border: none; padding: 10px 24px; border-radius: 6px; font-weight: 700; cursor: pointer; }
+#volunteer-message { font-weight: 600; color: var(--text-dark); }

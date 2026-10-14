@@ -1,4 +1,5 @@
 import { renderEntries } from './components/entries';
+import { initVolunteerForm } from './components/volunteer';
 
 const buttons = document.querySelectorAll<HTMLButtonElement>('[data-tab]');
 const tabs = document.querySelectorAll<HTMLElement>('.tab-content');
@@ -24,3 +25,5 @@ buttons.forEach((btn) => {
 window.addEventListener('scroll', () => {
   navbar?.classList.toggle('scrolled', window.scrollY > 50);
 });
+
+initVolunteerForm();
