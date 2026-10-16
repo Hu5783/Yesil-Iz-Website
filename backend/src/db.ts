@@ -11,6 +11,9 @@ function getPool(): Pool {
     }
     pool = new Pool({
       connectionString,
+      ssl: {
+        rejectUnauthorized: false, // Neon SSL bağlantısı için gerekli
+      },
       max: 5,
       keepAlive: true,                 
       idleTimeoutMillis: 4_000,       
