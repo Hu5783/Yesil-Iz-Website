@@ -1,10 +1,28 @@
-import { postData, HttpError } from '../api';
+import { fetchData, postData, HttpError } from '../api';
 
-export function initVolunteerForm(): void {
+interface Settings {
+  isApplicationOpen: boolean;
+}
+
+export async function initVolunteerForm(): Promise<void> {
   const form = document.querySelector<HTMLFormElement>('#volunteer-form');
   const message = document.querySelector<HTMLParagraphElement>('#volunteer-message');
   if (!form || !message) return;
 
+  // Check if we are open for new people
+  try {
+    const settings = await fetchData<Settings>('/settings');
+
+    if (!settings.isApplicationOpen) {
+      form.style.display = 'none';
+      message.textContent = 'Şu anda başvuruya açık değiliz. İlginiz için teşekkür ederiz!';
+      return;
+    }
+  } catch (error) {
+    console.error('Başvuru durumu alınamadı:', error);
+  }
+
+  // If yes, carry on
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     message.textContent = '';

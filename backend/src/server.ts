@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import { isLoginBody, isPasswordCorrect, requireAdmin, isSection, isNewEntry, isNewVolunteer } from './validation';
 import { generateAdminToken } from './auth';
-import { listEntries, addEntry, deleteEntry, addVolunteer, listVolunteers } from './db';
+import { listEntries, addEntry, deleteEntry, addVolunteer, listVolunteers, getSetting, setSetting } from './db';
 
 dotenv.config();
 
@@ -19,12 +19,13 @@ app.use(cookieParser());
 const cookieOptions = {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
-  sameSite: 'strict',
+  sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
 } as const;
 
 type Handler = (req: Request, res: Response) => Promise<unknown>;
 const safe = (fn: Handler) => (req: Request, res: Response): void => {
-  fn(req, res).catch(() => {
+  fn(req, res).catch((err) => {
+    console.error(`${req.method} ${req.path} başarısız:`, err);
     res.status(500).json({ error: 'Sunucu hatası' });
   });
 };
@@ -43,6 +44,11 @@ app.post('/api/admin/login', safe(async (req, res) => {
   res.json({ message: 'Giriş başarılı' });
 }));
 
+app.use(cors({ 
+  origin: process.env.FRONTEND_URL || 'http://localhost:3023', 
+  credentials: true 
+}));
+
 app.post('/api/admin/logout', (_req: Request, res: Response) => {
   res.clearCookie('admin_token', cookieOptions);
   res.json({ message: 'Çıkış yapıldı' });
@@ -54,7 +60,9 @@ app.get('/api/admin/panel', requireAdmin, (_req: Request, res: Response) => {
 
 app.get('/api/entries/:section', safe(async (req, res) => {
   const { section } = req.params;
-  if (!isSection(section)) return res.status(404).json({ error: 'Bölüm bulunamadı' });
+  if (section !== 'all' && !isSection(section)) {
+    return res.status(404).json({ error: 'Bölüm bulunamadı' });
+  }
   res.json(await listEntries(section));
 }));
 
@@ -84,6 +92,43 @@ app.get('/api/admin/volunteers', requireAdmin, safe(async (_req, res) => {
   res.json(await listVolunteers());
 }));
 
+
+app.get('/api/settings', safe(async (_req, res) => {
+  const val = await getSetting('is_application_open');
+  const isApplicationOpen = val === null ? true : val === 'true';
+  res.json({ isApplicationOpen });
+}));
+
+app.post('/api/admin/toggle-applications', requireAdmin, safe(async (_req, res) => {
+  const val = await getSetting('is_application_open');
+  const currentStatus = val === null ? true : val === 'true';
+  const newStatus = !currentStatus;
+
+  await setSetting('is_application_open', String(newStatus));
+
+  res.json({
+    isApplicationOpen: newStatus,
+    message: `Başvurular ${newStatus ? 'açıldı' : 'kapatıldı'}`
+  });
+}));
+
 app.listen(PORT, () => {
   console.log(`Backend sunucusu http://localhost:${PORT} üzerinde çalışıyor.`);
+});
+
+app.post('/api/admin/toggle-applications', requireAdmin, async (_req, res) => {
+  try {
+    const val = await getSetting('is_application_open');
+    const currentStatus = val === null ? true : val === 'true';
+    const newStatus = !currentStatus;
+
+    await setSetting('is_application_open', String(newStatus));
+
+    res.json({
+      isApplicationOpen: newStatus,
+      message: `Başvurular ${newStatus ? 'açıldı' : 'kapatıldı'}`
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Ayar güncellenemedi' });
+  }
 });

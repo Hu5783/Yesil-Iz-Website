@@ -12,35 +12,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  
   <header class="navbar">
-    <a href="https://yesil-iz.org">
-    <div class="logo-area">
+    <a href="https://yesil-iz.org" class="logo-area">
       <img src="images/logo.png" alt="Yeşil İz Logo" class="logo">
       <span>yesil-iz.org</span>
-    </div>
     </a>
+      <button class="hamburger-btn" id="menu-toggle" aria-label="Menüyü Aç">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="images/logo.png" alt="Logo" class="sidebar-logo">
+        <button class="close-btn" id="menu-close">&times;</button>
+      </div>
+  <nav class="sidebar-links">
 
-    <nav class="nav-links">
-      <button class="nav-btn active" data-tab="home">Home</button>
-      
-      <!-- Wrap Projects and its menu inside .dropdown -->
-      <div class="dropdown">
-        <button type="button" class="projects-btn">Projects <span class="arrow">▾</span></button>
-        <div class="dropdown-menu">
-          <button class="nav-btn sub-nav-btn" data-tab="better-parks">Better Parks</button>
-          <button class="nav-btn sub-nav-btn" data-tab="healthy-trees">Healthy Trees</button>
-          <button class="nav-btn sub-nav-btn" data-tab="clean-coast">Clean Coast</button>
-          <button class="nav-btn sub-nav-btn" data-tab="project-green">Project Green</button>
+      <button class="nav-btn active" data-tab="home">Ana Sayfa</button>
+
+      <div class="sidebar-folder">
+        <button type="button" class="folder-btn" id="projects-folder-btn">
+          <span>Projects</span>
+          <span class="folder-arrow">▾</span>
+        </button>
+        <div class="folder-content">
+          <button class="nav-btn sub-btn" data-tab="better-parks">Better Parks</button>
+          <button class="nav-btn sub-btn" data-tab="healthy-trees">Healthy Trees</button>
+          <button class="nav-btn sub-btn" data-tab="clean-coast">Clean Coast</button>
+          <button class="nav-btn sub-btn" data-tab="project-green">Project Green</button>
         </div>
       </div>
+
       <button class="nav-btn" data-tab="getting-involved">Getting Involved</button>
       <button class="nav-btn" data-tab="green-journal">Green Journal</button>
       <button class="nav-btn" data-tab="weekly-knowledge">Weekly Knowledge</button>
       <button class="nav-btn" data-tab="support">Support</button>
       <button class="nav-btn" data-tab="rewards">Rewards</button>
     </nav>
-  </header>
+  </aside>
 
   <main>
     <!-- MAINNN -->
@@ -48,7 +60,7 @@
       <div class="hero">
         <h1 class="header_text" style="font-size: 4rem;">Yeşil İz</h1>
       </div>
-      
+  
       <!-- Subtitle & What is Yeşil İz -->
       <div class="full-block bg-cream">
         <div class="full-block-inner">
@@ -100,21 +112,27 @@
         </div>
       </div>
 
-      <!-- Founders -->
+      <!-- Presidents & Founders(Where self glazing never ends) -->
       <div class="full-block bg-cream">
-        <div class="full-block-inner">
-          <div style="display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 300px;">
-              <h2 class="green-text" style="font-size: 2.3rem; margin-bottom: 0.5rem;">Founders</h2>
-              <h3 class="green-text" style="font-size: 1.3rem; margin-bottom: 1.2rem;">Arya Döven and Sena Karapıçak</h3>
-              <p class="body_text green-text" style="font-weight: 600; font-size: 0.98rem; line-height: 1.65;">We are both studying in Üsküdar American Academy, planned to graduate in 2030. Meeting through the UAA Debate Club, we found that we had similar interests and passions, especially about the environment. We found that we were both very bothered by how dirty our city was. We thought that if we educated teenagers, we would promise a clean future for Türkiye. It became our mission to help young people like us understand how important the state of the environment is and take small steps to change it. Because even though we will start in İstanbul, we hope to globalize our ideals and empower every teenager to know that they can make a difference.</p>
-            </div>
-            <div style="flex: 1; min-width: 300px;">
-              <img src="images/photo1.jpg" alt="Arya Döven ve Sena Karapıçak" style="width: 100%; height: auto; border-radius: 4px;">
-            </div>
-          </div>
+      <div class="full-block-inner bg-cream">
+        <h2 class="green-text" style="font-size: 2.3rem; margin-bottom: 1.8rem;">Leadership & Team</h2>
+        
+        <div style="margin-bottom: 2rem;">
+          <h3 class="green-text" style="font-size: 1.3rem; margin-bottom: 0.3rem;">Presidents & Founders</h3>
+          <p class="green-text" style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.8rem;">Sena Karapıçak & Arya Döven</p>
+          <p class="body_text green-text" style="font-weight: 500; font-size: 0.98rem; line-height: 1.65;">
+            Studying at Üsküdar American Academy, Sena and Arya co-founded Yeşil İz to raise ecological awareness among high school students across Türkiye and drive meaningful environmental action.
+          </p>
+        </div>
+        <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1.5rem;">
+          <h3 class="green-text" style="font-size: 1.3rem; margin-bottom: 0.3rem;">Vice President & Lead Platform Architect</h3>
+          <p class="green-text" style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.8rem;">Hüseyin Gültekin</p>
+          <p class="body_text green-text" style="font-weight: 500; font-size: 0.98rem; line-height: 1.65;">
+            Also studying at Üsküdar American Academy, Hüseyin leads the digital architecture and executive operations at Yeşil İz, engineering and custom-building the entire web platform and administrative infrastructure from the ground up.
+          </p>
         </div>
       </div>
+    </div>
     </section>
 
     <!-- Our Projects tab -->
@@ -171,10 +189,10 @@
       <div class="hero">
         <h1 class="header_text" style="font-size: 4rem;">Getting Involved</h1>
       </div>
-                  <div id="getting-involved-entries" style="text-align: left;"></div>
-
-          <h2 class="green-text" style="font-size: 2.3rem; margin: 2rem 0 1rem;">Apply to Volunteer</h2>
-          <form id="volunteer-form" class="volunteer-form">
+      <div class="full-block bg-cream">
+        <div class="full-block-inner">
+          <h2 id="volunteer-title" class="green-text center" style="font-size: 2.3rem; margin-bottom: 1.5rem;">Apply to Volunteer</h2>
+            <form id="volunteer-form" class="volunteer-form">
             <input type="text" name="name" placeholder="Full name" maxlength="100" required>
             <input type="email" name="email" placeholder="E-mail" maxlength="200" required>
             <textarea name="message" placeholder="Why do you want to volunteer? (optional)" rows="4" maxlength="1000"></textarea>
@@ -183,10 +201,8 @@
               I agree to the processing of my personal data for volunteer coordination purposes.
             </label>
             <button type="submit">Apply</button>
-            <p id="volunteer-message"></p>
+          <p id="volunteer-message"></p>
           </form>
-      <div class="full-block bg-cream">
-        <div class="full-block-inner">
           <h2 class="green-text" style="font-size: 2.3rem; margin-bottom: 1.5rem;">Volunteer Application Process</h2>
           <p class="body_text green-text" style="font-weight: 600; margin-bottom: 0.4rem;">Application Form Opens: September 15 2026 <a href="https://forms.gle/3oi638MqRmiWmWrb6" target="_blank" style="color: var(--green-main); text-decoration: underline;">Click here</a></p>
           <p class="body_text green-text" style="font-weight: 600; margin-bottom: 0.4rem;">Application Form Closes: October 10 2026</p>

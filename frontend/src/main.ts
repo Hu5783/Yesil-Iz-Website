@@ -1,29 +1,36 @@
 import { renderEntries } from './components/entries';
 import { initVolunteerForm } from './components/volunteer';
 
-const buttons = document.querySelectorAll<HTMLButtonElement>('[data-tab]');
+const tabButtons = document.querySelectorAll<HTMLButtonElement>('[data-tab]');
 const tabs = document.querySelectorAll<HTMLElement>('.tab-content');
-const navbar = document.querySelector<HTMLElement>('.navbar');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebar-overlay');
+const folder = document.querySelector('.sidebar-folder');
 
-buttons.forEach((btn) => {
+const setMenu = (open: boolean): void => {
+  sidebar?.classList.toggle('active', open);
+  overlay?.classList.toggle('active', open);
+};
+
+tabButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
-    const targetTab = btn.dataset.tab;
-    if (!targetTab) return;
+    const target = btn.dataset.tab;
+    if (!target) return;
 
-    buttons.forEach((b) => b.classList.remove('active'));
-    tabs.forEach((t) => t.classList.remove('active'));
-
-    btn.classList.add('active');
-    document.getElementById(targetTab)?.classList.add('active');
-    window.scrollTo({ top: 0 }); // yeni sekme sayfanın başından açılsın
-    btn.blur();
-
-    renderEntries(targetTab);
+    tabButtons.forEach((b) => b.classList.toggle('active', b.dataset.tab === target));
+    tabs.forEach((t) => t.classList.toggle('active', t.id === target));
+    window.scrollTo({ top: 0 });
+    setMenu(false); 
+    renderEntries(target);
   });
 });
 
-window.addEventListener('scroll', () => {
-  navbar?.classList.toggle('scrolled', window.scrollY > 50);
+document.getElementById('menu-toggle')?.addEventListener('click', () => setMenu(true));
+document.getElementById('menu-close')?.addEventListener('click', () => setMenu(false));
+overlay?.addEventListener('click', () => setMenu(false));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') setMenu(false);
 });
+document.getElementById('projects-folder-btn')?.addEventListener('click', () => folder?.classList.toggle('open'));
 
 initVolunteerForm();

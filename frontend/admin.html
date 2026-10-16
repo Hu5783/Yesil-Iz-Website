@@ -32,8 +32,16 @@
       <select id="filter-section" class="input_box"></select>
       <div id="entry-list"></div>
     </article>
-
-    <article class="entry-card">
+    <div class="app-status-card" style="background: #ffffff; padding: 18px 24px; border-radius: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <div>
+        <span style="font-weight: 600; font-size: 1rem; color: #2c3e2e;">Başvuru Durumu: </span>
+        <span id="app-status-text" style="font-weight: bold; font-size: 1rem;">Yükleniyor...</span>
+      </div>
+      <button id="toggle-app-btn" type="button" style="padding: 10px 20px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
+        Yükleniyor...
+      </button>
+    </div>
+    <article class="entry-card box">
       <h2>Gönüllü başvuruları</h2>
       <div id="volunteer-list"></div>
     </article>

@@ -1,5 +1,6 @@
-const API_BASE_URL = 'http://localhost:5023/api';
-
+const API_BASE_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:5023/api'
+  : 'https://yesiliz-backend.vercel.app/api'; 
 export class HttpError extends Error {
   constructor(public status: number, message: string) {
     super(message);

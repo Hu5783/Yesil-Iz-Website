@@ -1,21 +1,22 @@
-export function card(title: string, body: string, meta: string, onDelete?: () => void): HTMLElement {
-  const article = document.createElement('article');
-  article.className = 'entry-card';
+export function el<K extends keyof HTMLElementTagNameMap>(tag: K, className = '', text = ''): HTMLElementTagNameMap[K] {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  node.textContent = text; // innerHTML değil: içeriğe girilen HTML çalışmaz (XSS)
+  return node;
+}
 
-  const h3 = document.createElement('h3');
-  h3.textContent = title;
-  const p = document.createElement('p');
-  p.textContent = body;
-  const small = document.createElement('small');
-  small.textContent = meta;
-  article.append(h3, p, small);
+export function card(title: string, body: string, meta: string, onDelete?: () => void): HTMLElement {
+  const footer = el('div', 'card-footer');
+  footer.append(el('small', '', meta));
 
   if (onDelete) {
-    const btn = document.createElement('button');
+    const btn = el('button', 'delete-btn', 'Sil');
     btn.type = 'button';
-    btn.textContent = 'Sil';
     btn.addEventListener('click', onDelete);
-    article.append(btn);
+    footer.append(btn);
   }
+
+  const article = el('article', 'entry-card');
+  article.append(el('h3', '', title), el('p', '', body), footer);
   return article;
 }
