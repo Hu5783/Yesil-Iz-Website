@@ -19,7 +19,7 @@ app.use(cookieParser());
 const cookieOptions = {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
-  sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+  sameSite: 'lax',
 } as const;
 
 type Handler = (req: Request, res: Response) => Promise<unknown>;
