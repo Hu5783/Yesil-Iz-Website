@@ -12,7 +12,22 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5023;
 
-app.use(cors({ origin: 'https://yesil-iz-website.vercel.app', credentials: true }));
+const allowedOrigins = [
+  'http://localhost:3023',
+  'https://yesil-iz.org',
+  'https://www.yesil-iz.org',
+  'https://yesil-iz-website.vercel.app'
+];
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(null, true); 
+    }
+  },
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -82,6 +97,12 @@ app.delete('/api/admin/entries/:id', requireAdmin, safe(async (req, res) => {
 const volunteerLimiter = rateLimit({ windowMs: 15 * 60 * 1000, limit: 5 });
 
 app.post('/api/volunteers', volunteerLimiter, safe(async (req, res) => {
+  const val = await getSetting('is_application_open');
+  const isOpen = val === null ? true : val === 'true';
+
+  if (!isOpen) {
+    return res.status(403).json({ error: 'Gönüllü başvuruları şu an kapalıdır.' });
+  }
   const body = req.body;
   if (!isNewVolunteer(body)) return res.status(400).json({ error: 'Geçersiz başvuru' });
   await addVolunteer(body);
@@ -132,3 +153,4 @@ app.post('/api/admin/toggle-applications', requireAdmin, async (_req, res) => {
     res.status(500).json({ error: 'Ayar güncellenemedi' });
   }
 });
+
