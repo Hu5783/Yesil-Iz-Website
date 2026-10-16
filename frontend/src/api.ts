@@ -1,6 +1,8 @@
-const API_BASE_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:5023/api'
-  : 'https://yesiliz-backend.vercel.app/api'; 
+const API_BASE_URL =
+  window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5023/api'
+    : 'https://yesil-iz-website-t1z4.vercel.app/api';
+
 export class HttpError extends Error {
   constructor(public status: number, message: string) {
     super(message);
@@ -10,7 +12,7 @@ export class HttpError extends Error {
 async function request<T>(method: string, endpoint: string, body?: unknown): Promise<T> {
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {
     method,
-    credentials: 'include',
+    credentials: 'include', // Cookie gönderimi için şart
     headers: body === undefined ? undefined : { 'Content-Type': 'application/json' },
     body: body === undefined ? undefined : JSON.stringify(body),
   });

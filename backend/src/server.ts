@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5023;
 
-app.use(cors({ origin: 'http://localhost:3023', credentials: true }));
+app.use(cors({ origin: 'https://yesil-iz-website.vercel.app', credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
