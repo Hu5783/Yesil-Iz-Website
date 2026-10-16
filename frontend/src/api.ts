@@ -1,7 +1,7 @@
 const API_BASE_URL =
   window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5023/api'
-    : 'https://yesil-iz-website-t1z4.vercel.app/api';
+    : '/api';
 
 export class HttpError extends Error {
   constructor(public status: number, message: string) {

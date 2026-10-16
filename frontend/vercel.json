@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://yesil-iz-website-t1z4.vercel.app/api/:path*"
+    }
+  ]
+}
